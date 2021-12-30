@@ -1,162 +1,94 @@
 <link rel="shortcut icon" type="image/png" href="/nft.png"/>
 <style>
-/* Settings */
-$c_0: #000000;
-$c_1: #353540;
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+#gallerywrapper {
+    width:640px;
+    height:450px;
+    margin:0 auto;
+    position:relative;
+    font-family:verdana, arial, sans-serif;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh;
-    background: #000000;
+#gallerywrapper #gallery {
+    position:absolute;
+    left:0;
+    top:0;
+    height:450px;
+    width:640px;
+    overflow:hidden;
+    text-align:center;
 }
 
-.l-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 30px;
-    width: 100%;
-    max-width: 1200px;
-    padding: 30px;
-
-    @media screen and (max-width: 760px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
+#gallerywrapper #gallery div {
+    width:640px; height:900px;
+    padding-top:10px;
+    position:relative;
 }
 
-.b-game-card {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    padding-bottom: 100%;
-    perspective: 1000px;
-    transition: transform 0.35s;
+#gallerywrapper #gallery div img {
+    clear:both;
+    display:block;
+    margin:0 auto;
+    border:0;
+}
 
-    .cover {
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-        background-size: cover;
-        box-shadow: 0px 0px 8px 1px #000000ad;
-        perspective-origin: 50% 50%;
-        transform-style: preserve-3d;
-        transform-origin: center;
-        will-change: transform;
-        transition: transform 0.5s, filter 0.35s;
-            border-radius: 5px;
+#gallerywrapper #gallery div h3 {
+    padding:10px 0 0 0;
+    margin:0;
+    font-size:18px;
+}
 
-        /* Gloss */
-        .gloss {
-            position: absolute;
-            pointer-events: none;
-            top: 0;
-            left: 0;
-            width: 20em;
-            height: 20em;
-            margin-left: -6em;
-            margin-top: -17em;
-            background: radial-gradient(
-                circle farthest-corner at 50% 50%,
-                rgba(255, 255, 255, 0.7) 0%,
-                rgba(255, 255, 255, 0.5) 33%,
-                rgba(255, 255, 255, 0) 60%,
-                rgba(255, 255, 255, 0) 100%
-            );
-            opacity: 0;
-            will-change: transform;
-            transition: opacity 0.21s ease-in-out;
-        }
-    }
+#gallerywrapper #gallery div p {
+    padding:5px 0;
+    margin:0;
+    font-size:12px;
+    line-height:18px;
+}
 
-    &:hover {
-        transform: scale(1.15);
-        z-index: 10;
+#gallery .previous{
+    display:inline;
+    float:left;
+    margin-left:80px;
+    text-decoration:none;
+}
 
-        .cover {
-            box-shadow: 10px 20px 32px 1px #000000ab;
-            transition: none;
-
-            .gloss {
-                opacity: 0.5;
-            }
-        }
-    }
+#gallery .next{
+    display:inline;
+    float:right;
+    margin-right:80px;
+    text-decoration:none;
 }
 </style>
-<script>
-const maxTilt = 25; // Max card tilt (deg).
-
-$(".b-game-card")
-    .mousemove(function(evt) {
-        let bounding = mouseOverBoundingElem(evt);
-
-        let posX = bounding.width / 2 - bounding.x;
-        let posY = bounding.height / 2 - bounding.y;
-        let hypotenuseCursor = Math.sqrt(Math.pow(posX, 2) + Math.pow(posY, 2));
-        let hypotenuseMax = Math.sqrt(Math.pow(bounding.width / 2, 2) + Math.pow(bounding.height / 2, 2));
-        let ratio = hypotenuseCursor / hypotenuseMax;
-
-        $(".cover", this).css({
-            transform: `rotate3d(${posY / hypotenuseCursor}, ${-posX / hypotenuseCursor}, 0, ${ratio * maxTilt}deg)`,
-            filter: `brightness(${1.7 - bounding.y / bounding.height})` // 0.6 = offset, brightness will be from 0.6 to 1.6
-        });
-        $(".gloss", this).css({
-            transform: `translateX(${posX * ratio * 0.75}px) translateY(${posY * ratio}px)` // 0.75 = offset
-        });
-    })
-    .mouseleave(function() {
-        let css = {
-            transform: "",
-            filter: ""
-        };
-        $(".cover, .gloss", this).css(css);
-    });
-
-function mouseOverBoundingElem(evt) {
-    let bounding = evt.target.getBoundingClientRect();
-    let x = evt.originalEvent.pageX - Math.round(bounding.left);
-    let y = evt.originalEvent.pageY - Math.round(bounding.top);
-
-    return {
-        x: Math.max(0, x),
-        y: Math.max(0, y),
-        width: Math.round(bounding.width),
-        height: Math.round(bounding.height)
-    };
-}
-</script>
 <!DOCTYPE html>
 
 <html>
+<link rel="shortcut icon" type="image/png" href="/nft.png"/>
 <title>NFT Collection</title>
-<div class="l-container">
-    <div class="b-game-card">
-        <div class="cover" style="background-image: url(https://d2vi0z68k5oxnr.cloudfront.net/6843561a-4d4f-47c5-ad86-9c87eac5b18a/original.png?d=sm-cover);">
-            <div class="gloss"></div>
-        </div>
-    </div>
-    <div class="b-game-card">
-        <div class="cover" style="background-image: url(https://d2vi0z68k5oxnr.cloudfront.net/65a87366-f597-4b1b-897e-baf9797323c1/original.png?d=sm-cover);">
-            <div class="gloss"></div>
-        </div>
-    </div>
-    <div class="b-game-card">
-        <div class="cover" style="background-image: url(https://lh3.googleusercontent.com/5thupy8dLg0EfAV20oBin5tTRvimjJRIZN2G0QyGpk_k3BiCD_odCE8JrUvH8FvJs0f5GSq92qQaDlx7oeFOLXVkn5hCG0DoPgQ1=w600);">
-            <div class="gloss"></div>
-        </div>
-    </div>
+<div id="gallerywrapper">
+	    <div id="gallery">
+		    <div id="pic1">
+			    <img src="https://lh3.googleusercontent.com/5thupy8dLg0EfAV20oBin5tTRvimjJRIZN2G0QyGpk_k3BiCD_odCE8JrUvH8FvJs0f5GSq92qQaDlx7oeFOLXVkn5hCG0DoPgQ1=w600" height="223" width="506" alt="Image 1">
+			    <a class="previous" href="#pic3">&lt;</a>
+			    <a class="next" href="#pic2">&gt;</a>
+			    <h3>name: uy</h3>
+			    <p>Pisa or Pizza</p>
+		    </div>
+		    <div id="pic2">
+			    <img src="https://d2vi0z68k5oxnr.cloudfront.net/6843561a-4d4f-47c5-ad86-9c87eac5b18a/original.png?d=sm-cover" height="400" width="400" alt="Image 2">
+			    <a class="previous" href="#pic1">&lt;</a>
+			    <a class="next" href="#pic3">&gt;</a>
+			    <h3>name: sa #115</h3>
+			    <p>Monkee</p>
+		    </div>
+		    <div id="pic3">
+			    <img src="https://d2vi0z68k5oxnr.cloudfront.net/65a87366-f597-4b1b-897e-baf9797323c1/original.png?d=sm-cover" height="400" width="400" alt="Image 3">
+			    <a class="previous" href="#pic2">&lt;</a>
+			    <a class="next" href="#pic1">&gt;</a>
+			    <h3>Julius Pepe</h3>
+			    <p>Greatest memearch of the 21st century</p>
+		    </div>
 
-<html>
+	    </div>
+</div>
+
+
+</html>

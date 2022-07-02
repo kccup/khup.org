@@ -2,60 +2,143 @@
 <link rel="shortcut icon" type="image/png" href="/warp.nft.png"/>
 <title>Warp</title>
 <style>
-  body {
-  background: black;
+  $blend-mode: difference;
+$body-color: #000;
+$circle-color: linear-gradient(rgb(255, 54, 224) 0%, rgb(57, 252, 40) 50%, rgb(153, 250, 235) 100%), linear-gradient(to right, rgb(248, 255, 61) 0%, rgb(255, 145, 65) 50%, rgb(73, 248, 255) 100%);
+$angle-of-end-rotate: -2880deg;
+$animation-duration: 10s;
+$number-of-circles: 46; // dont forget edit slim, relative to number below
+$number-of-retain-circles: 27;
+
+$angle-diff: 360/$number-of-circles;
+$number-of-collapsed-circles: $number-of-circles/$number-of-retain-circles;
+
+// Position
+html, body {
+  min-height: 100%;
 }
 
-.progress {
-  --progress: 0%;
+.im-not-on-lsd {
+  position: absolute;
+  left: 50%;
+  top: 50%;
   
-  width: 500px;
-  height: 50px;
-  margin: 9em auto;
-  border: 1px solid #fff;
-  padding: 12px 10px;
-  box-shadow: 0 0 10px #aaa;
+  div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    margin-left: -200px;
+    height: 0;
+    
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      position: absolute;
+      top: -100px;
+    }
+    
+    &:before {
+      right: 0;
+    }
+
+  }
 }
 
-.progress .bar {
-  width: var(--progress);
-  height: 100%;
-  background: linear-gradient(gold, #c85, gold);
-  background-repeat: repeat;
-  box-shadow: 0 0 10px 0px orange;
-  animation: 
-    shine 4s ease-in infinite,
-    end 1s ease-out 1 7s;
-  transition: width 3s ease 3s;
+// Effects, animation and blend mode
+html {
+  /* filter: invert(100%); */
+}
+body {
+  background: $body-color;
+  /* isolation: isolate; */
+}
+.im-not-on-lsd {
+  animation: wrapper $animation-duration infinite;
+  
+  // Axis
+  div {
+    mix-blend-mode: $blend-mode;
+    
+    &:before,
+    &:after {
+      background: $circle-color;
+      animation: circles-scale $animation-duration infinite;
+    }
+    
+    @for $i from 1 through $number-of-circles/2 {
+      &:nth-child(#{$i}) {
+       animation: axis#{$i}-rotate $animation-duration infinite;
+       transform: rotate(
+         $i * $angle-diff * 1deg
+       );
+      }
+    }
+  }
 }
 
-@property --progress {
-  syntax: "<length>";
-  initial-value: 0%;
-  inherits: true;
+@keyframes circles-scale {
+  from {
+    transform: scale(0);
+  }
+  50%,
+  100% {
+    transform: scale(1);
+  }
 }
 
-@keyframes shine {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 50px; }
+@for $i from 1 through $number-of-circles/2 {
+  @keyframes axis#{$i}-rotate {
+    from,
+    50% {
+      transform: rotate(
+        $i * $angle-diff * 1deg
+      );
+    }
+    95%,
+    99.99%{
+      transform: 
+        rotate(
+          ($i * $angle-diff) - 
+          ($i % $number-of-collapsed-circles * $angle-diff) * 
+          1deg
+        );
+    }
+    to {
+      transform: rotate(
+        $i * $angle-diff * 1deg
+      );
+    }
+  }
 }
 
-@keyframes end {
-  0%, 100% { box-shadow: 0 0 10px 0px orange; }
-  50% { box-shadow: 0 0 15px 5px orange; }
+@keyframes wrapper {
+  from {
+    opacity: 1;
+    transform: rotate(0);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(0);
+  }
+  90% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: rotate($angle-of-end-rotate);
+  }
 }
 </style>
-<script>
-  const bar = document.querySelector(".bar");
-
-
-setTimeout(() => {
-  bar.style.setProperty("--progress", "75%");
-}, 500);
-  </script>
 <!DOCTYPE html>
 <html>
-  <div class="progress">
-    <div class="bar"></div>
-  </div>
+  - number_of_circles = 24
+div.im-not-on-lsd
+  - for i in (1..number_of_circles)
+    div
+    
 </html>

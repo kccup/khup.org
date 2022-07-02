@@ -1,5 +1,91 @@
 
 <link rel="shortcut icon" type="image/png" href="/nft.png"/>
+@import url(https://fonts.googleapis.com/css?family=Anaheim);
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+	box-sizing: border-box;
+}
+*:before,
+*:after{
+	box-sizing: border-box;
+}
+html,
+body{
+	min-height: 100%;
+}
+body{
+	background-image: radial-gradient(mintcream 0%, lightgray 100%);
+}
+h1{
+	display: table;
+	margin: 5% auto 0;
+	text-transform: uppercase;
+	font-family: 'Anaheim', sans-serif;
+	font-size: 4em;
+	font-weight: 400;
+	text-shadow: 0 1px white, 0 2px black;
+}
+.container{
+	margin: 4% auto;
+	width: 210px;
+	height: 140px;
+	position: relative;
+	perspective: 1000px;
+}
+#carousel{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	animation: rotation 20s infinite linear;
+}
+#carousel:hover{
+	animation-play-state: paused;
+}
+#carousel figure{
+	display: block;
+	position: absolute;
+	width: 186px;
+	height: 116px;
+	left: 10px;
+	top: 10px;
+	background: black;
+	overflow: hidden;
+	border: solid 5px black;
+}
+#carousel figure:nth-child(1){transform: rotateY(0deg) translateZ(288px);}
+#carousel figure:nth-child(2) { transform: rotateY(40deg) translateZ(288px);}
+#carousel figure:nth-child(3) { transform: rotateY(80deg) translateZ(288px);}
+#carousel figure:nth-child(4) { transform: rotateY(120deg) translateZ(288px);}
+#carousel figure:nth-child(5) { transform: rotateY(160deg) translateZ(288px);}
+#carousel figure:nth-child(6) { transform: rotateY(200deg) translateZ(288px);}
+#carousel figure:nth-child(7) { transform: rotateY(240deg) translateZ(288px);}
+#carousel figure:nth-child(8) { transform: rotateY(280deg) translateZ(288px);}
+#carousel figure:nth-child(9) { transform: rotateY(320deg) translateZ(288px);}
+
+img{
+	-webkit-filter: grayscale(1);
+	cursor: pointer;
+	transition: all .5s ease;
+}
+img:hover{
+	-webkit-filter: grayscale(0);
+  transform: scale(1.2,1.2);
+}
+
+@keyframes rotation{
+	from{
+		transform: rotateY(0deg);
+	}
+	to{
+		transform: rotateY(360deg);
+	}
+}
+-----------
 <style>
 #gallerywrapper {
     width:640px;
@@ -63,31 +149,15 @@
 <!DOCTYPE html>
 
 <html>
-
-<title>NFT Collection</title>
-<div id="gallerywrapper">
-	    <div id="gallery">
-		    <div id="pic1">
-			    <img src="https://lh3.googleusercontent.com/5thupy8dLg0EfAV20oBin5tTRvimjJRIZN2G0QyGpk_k3BiCD_odCE8JrUvH8FvJs0f5GSq92qQaDlx7oeFOLXVkn5hCG0DoPgQ1=w600" height="223" width="506" alt="Image 1">
-			    <a class="previous" href="#pic3">&lt;</a>
-			    <a class="next" href="#pic2">&gt;</a>
-          <a href=" https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/3930457858691490134620902604249445482795232256141344242079882748024674320385/"target="_blank">Info</a>
-        </div>
-		    <div id="pic2">
-			    <img src="https://d2vi0z68k5oxnr.cloudfront.net/6843561a-4d4f-47c5-ad86-9c87eac5b18a/original.png?d=sm-cover" height="400" width="400" alt="Image 2">
-			    <a class="previous" href="#pic1">&lt;</a>
-			    <a class="next" href="#pic3">&gt;</a>
-			    <a href="https://crypto.org/explorer/nfts/tokens/s2dc4ce62b900dae7ba96f959d04fe80d/edition3" target="_blank">Info</a>
-		    </div>
-		    <div id="pic3">
-			    <img src="https://d2vi0z68k5oxnr.cloudfront.net/65a87366-f597-4b1b-897e-baf9797323c1/original.png?d=sm-cover" height="400" width="400" alt="Image 3">
-			    <a class="previous" href="#pic2">&lt;</a>
-			    <a class="next" href="#pic1">&gt;</a>
-			    <a href="https://crypto.org/explorer/nfts/tokens/ccb75f0cd0ae9e53d9ecd267fa0161ca5/edition1"target="_blank">Info</a>
-		    </div>
-
-	    </div>
-</div>
-
+<h1>NFT COLLECTION</h1>
+  <div class="container">
+		<div id="carousel">
+			<figure><img src="https://lh3.googleusercontent.com/5thupy8dLg0EfAV20oBin5tTRvimjJRIZN2G0QyGpk_k3BiCD_odCE8JrUvH8FvJs0f5GSq92qQaDlx7oeFOLXVkn5hCG0DoPgQ1=w600" alt=""></figure>
+			<figure><img src="https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/3930457858691490134620902604249445482795232256141344242079882748024674320385/" alt=""></figure>
+			<figure><img src="https://d2vi0z68k5oxnr.cloudfront.net/6843561a-4d4f-47c5-ad86-9c87eac5b18a/original.png?d=sm-cover" alt=""></figure>
+			<figure><img src="https://crypto.org/explorer/nfts/tokens/ccb75f0cd0ae9e53d9ecd267fa0161ca5/edition1" alt=""></figure>
+			<figure><img src="https://crypto.org/explorer/nfts/tokens/s2dc4ce62b900dae7ba96f959d04fe80d/edition3" alt=""></figure>
+		</div>
+	</div>
 
 </html>

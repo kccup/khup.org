@@ -1,7 +1,7 @@
 # Main
  Open source project of my website, Akakios.net.
  
- Click [Akakios](http://www.akakios.net/) <-- to see the result
+ Click [Alternative](https://www.alternative.pages.dev/) <-- to see the result
  
- -Hosted on Hostinger
+ -Hosted on Cloudflare Pages
  

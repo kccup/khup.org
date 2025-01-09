@@ -1,77 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-</head>
-<body>
-  <div class="hero-section">
-    <h1 class="title">Khup Mung</h1>
-    <h3 class="subtitle">Blog</h3>
-    
-    <div class="interactive-canvas"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Inlined CSS for convenience. You can move it to styles.css if you prefer. -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    <div>
-      <p>January 7, 2025</p>
-      <p>
-        Just thought about Cybersecurity and how cool of a profession it is. but I also thought about the magnitude of opportunities if
-        I were to pursue an Electrical Engineering degree. Lots of things I like to do but I am bounded by time.
-      </p>
-     
+      body {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: #f4f0f0 url('textured-background.jpg') center/cover no-repeat;
+        text-align: center;
+        padding: 4rem 1rem;
+      }
+
+      .title {
+        font-size: 3rem;
+        color: #d63f3f;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .subtitle {
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      /* Main Content Section */
+      .content-section {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 1rem;
+      }
+
+      .date-container {
+        margin: 2rem 0 1rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .date-divider {
+        flex: 1;
+        border-bottom: 1px solid #ccc;
+        margin: 0 1rem;
+      }
+
+      .date-text {
+        white-space: nowrap;
+        font-weight: 700;
+        color: #555;
+      }
+
+      .post-content {
+        margin-bottom: 2rem;
+        text-align: justify;
+      }
+
+      /* Symbol (Crown) Section */
+      .symbol-container {
+        text-align: center;
+        margin: 3rem 0;
+      }
+
+      .symbol {
+        width: 80px;
+        height: 80px;
+        background-image: url('/Oldstuff/picto.png');
+        background-size: cover;
+        background-position: center;
+        margin: 0 auto;
+      }
+
+      .symbol#crown {
+        clip-path: polygon(50% 0%,
+            60% 40%,
+            80% 20%,
+            100% 40%,
+            80% 60%,
+            100% 100%,
+            50% 80%,
+            0% 100%,
+            20% 60%,
+            0% 40%,
+            20% 20%,
+            40% 40%);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <h1 class="title">Khup Mung</h1>
+      <h3 class="subtitle">Blog</h3>
     </div>
-  </div>
+    <!-- Main Content -->
+    <!-- space time -->
+    <!-- Date Divider Jan 7, 2025-->
+    <div class="content-section">
+      <div class="date-container">
+        <div class="date-divider"></div>
+        <span class="date-text">January 9, 2025</span>
+        <div class="date-divider"></div>
+      </div>
+        <p class="post-content"> Loving it now </p>
+      <div class="symbol-container">
+        <div class="symbol" id="crown"></div>
+      </div>
 
-  <section class="content">
-    <div class="symbol" id="crown"></div>
-    <p></p>
-  </section>
-
-  
-<style>
-   body {
-     font-family: 'Courier New', Courier, monospace;
-     background-color: #f4f4f4;
-     color: #333;
-   }
-   
-   .hero-section {
-     background-image: url('textured-background.jpg');
-     background-size: cover;
-     text-align: center;
-     padding: 50px;
-   }
-   
-   .title {
-     font-size: 3rem;
-     color: #ff0000;
-   }
-   
-   .subtitle {
-     font-size: 1.5rem;
-   }
-   
-   .symbol {
-     width: 80px;
-     height: 80px;
-     background-image: url('/Oldstuff/picto.png'); 
-     background-size: cover; 
-     background-position: auto; 
-     margin: auto;
-   }
-   
-   .symbol#crown {
-     clip-path: polygon(50% 0%, 60% 40%, 80% 20%, 100% 40%, 80% 60%, 100% 100%, 
-                       50% 80%, 0% 100%, 20% 60%, 0% 40%, 20% 20%, 40% 40%);
-   }
-</style>
-
-   </style>
-  <script>
-   gsap.from(".title", { duration: 2, y: -50, opacity: 0 });
-   gsap.to("#crown", { duration: 3, rotationY: "360", repeat: -1 });
-   </script>
-</body>
+      <!-- Date Divider Jan 7, 2025-->
+      <div class="date-container">
+        <div class="date-divider"></div>
+        <span class="date-text">January 7, 2025</span>
+        <div class="date-divider"></div>
+      </div>
+      <p class="post-content"> Just thought about Cybersecurity and how cool of a profession it is. But I also thought about the magnitude of opportunities if I were to pursue an Electrical Engineering degree. Lots of things I like to do, but I am bounded by time. </p>
+      <div class="symbol-container">
+        <div class="symbol" id="crown"></div>
+      </div>
+    </div>
+    <!-- GSAP Animations -->
+    <script>
+      // Animate the title
+      gsap.from(".title", {
+        duration: 2,
+        y: -50,
+        opacity: 0
+      });
+      // Continuously rotate the crown
+      gsap.to("#crown", {
+        duration: 3,
+        rotationY: "360",
+        repeat: -1,
+        ease: "linear"
+      });
+    </script>
+  </body>
 </html>

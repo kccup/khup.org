@@ -9,9 +9,53 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
+
+    <!-- da Vinci notebook styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background: url('/images/parchment.jpg') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Libre Baskerville', serif;
+        color: #3e2723;
+        padding: 2rem;
+      }
+      nav {
+        background: rgba(255,248,220,0.8);
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #a1887f;
+        margin-bottom: 1rem;
+      }
+      nav a {
+        text-decoration: none;
+        color: #3e2723;
+        font-weight: bold;
+      }
+      #quote {
+        font-style: italic;
+        margin-top: 1rem;
+      }
+    </style>
   </head>
   <body>
-    This better work
-    <script src="/js/main.js" type="module"></script>
+    <nav>
+      <a href="/index.html">← Go back</a>
+    </nav>
+    <h1>About Me</h1>
+    <p>Welcome to my creative notebook, inspired by Leonardo da Vinci’s sketches and writings.</p>
+    <!-- notebook-style content goes here -->
+    <section id="notebook-content">
+      This better work
+    </section>
+    <div id="quote"></div>
+    <script type="module">
+      const quotes = [
+        "Learning never exhausts the mind.",
+        "Art is the queen of all sciences communicating knowledge to all the generations of the world.",
+        "Simplicity is the ultimate sophistication."
+      ];
+      document.getElementById('quote').innerText =
+        quotes[Math.floor(Math.random() * quotes.length)];
+    </script>
   </body>
 </html>

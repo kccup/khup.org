@@ -9,9 +9,82 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
+
+    <!-- da Vinci notebook styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background: url('/images/parchment.jpg') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Libre Baskerville', serif;
+        color: #3e2723;
+        padding: 2rem;
+      }
+      nav {
+        background: rgba(255,248,220,0.8);
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #a1887f;
+        margin-bottom: 1rem;
+      }
+      nav a {
+        text-decoration: none;
+        color: #3e2723;
+        font-weight: bold;
+      }
+      #quote {
+        font-style: italic;
+        margin-top: 1rem;
+      }
+      /* about me styled section */
+      #about-section .card {
+        background: rgba(255,248,220,0.8);
+        border: 1px solid #a1887f;
+        border-radius: 0.5rem;
+        padding: 1rem;
+      }
+      #about-section h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      #about-section ul {
+        list-style: square;
+        padding-left: 1.5rem;
+      }
+    </style>
   </head>
   <body>
-    This better work
-    <script src="/js/main.js" type="module"></script>
+    <nav>
+      <a href="/index.html">← Go back</a>
+    </nav>
+    <section id="about-section" class="container">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <img src="/images/avatar.jpg" alt="Avatar" class="img-fluid rounded shadow-sm mb-3">
+        </div>
+        <div class="col-md-8">
+          <div class="card">
+            <h2>About Me</h2>
+            <p><strong>Name:</strong> Khup Mung (Symere)</p>
+            <p><strong>Interests:</strong></p>
+            <ul>
+              <li>Chess</li>
+              <li>Music (playing & listening)</li>
+              <li>Soccer</li>
+              <li>Movies</li>
+              <li>Mathematics (except trigonometry)</li>
+              <li>Philosophy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="quote"></div>
+    <script type="module">
+      const quotes = [
+        "Learning never exhausts the mind."
+      ];
+      document.getElementById('quote').innerText =
+        quotes[Math.floor(Math.random() * quotes.length)];
+    </script>
   </body>
 </html>

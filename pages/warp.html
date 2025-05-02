@@ -35,24 +35,53 @@
         font-style: italic;
         margin-top: 1rem;
       }
+      /* about me styled section */
+      #about-section .card {
+        background: rgba(255,248,220,0.8);
+        border: 1px solid #a1887f;
+        border-radius: 0.5rem;
+        padding: 1rem;
+      }
+      #about-section h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      #about-section ul {
+        list-style: square;
+        padding-left: 1.5rem;
+      }
     </style>
   </head>
   <body>
     <nav>
       <a href="/index.html">← Go back</a>
     </nav>
-    <h1>About Me</h1>
-    <p>Welcome to my creative notebook, inspired by Leonardo da Vinci’s sketches and writings.</p>
-    <!-- notebook-style content goes here -->
-    <section id="notebook-content">
-      This better work
+    <section id="about-section" class="container">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <img src="/images/avatar.jpg" alt="Avatar" class="img-fluid rounded shadow-sm mb-3">
+        </div>
+        <div class="col-md-8">
+          <div class="card">
+            <h2>About Me</h2>
+            <p><strong>Name:</strong> Khup Mung (Symere)</p>
+            <p><strong>Interests:</strong></p>
+            <ul>
+              <li>Chess</li>
+              <li>Music (playing & listening)</li>
+              <li>Soccer</li>
+              <li>Movies</li>
+              <li>Mathematics (except trigonometry)</li>
+              <li>Philosophy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
     <div id="quote"></div>
     <script type="module">
       const quotes = [
-        "Learning never exhausts the mind.",
-        "Art is the queen of all sciences communicating knowledge to all the generations of the world.",
-        "Simplicity is the ultimate sophistication."
+        "Learning never exhausts the mind."
       ];
       document.getElementById('quote').innerText =
         quotes[Math.floor(Math.random() * quotes.length)];

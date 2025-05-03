@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Centered About Me</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <style>
+      body {
+        min-height: 100vh;
+        background-color: #f5f5dc;
+        background: url('/images/parchment.jpg') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Libre Baskerville', serif;
+        color: #3e2723;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      nav {
+        background: rgba(255,248,220,0.8);
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #a1887f;
+        margin-bottom: 2rem;
+        width: 100%;
+        max-width: 960px;
+        box-sizing: border-box;
+      }
+      nav a {
+        text-decoration: none;
+        color: #3e2723;
+        font-weight: bold;
+      }
+      #about-section {
+         width: 100%;
+         max-width: 960px;
+         margin-bottom: 2rem;
+      }
+      #about-section .card {
+        background: rgba(255,248,220,0.8);
+        border: 1px solid #a1887f;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        margin-top: 1rem;
+      }
+      #about-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      #about-section ul {
+        list-style: square;
+        padding-left: 0;
+        display: inline-block;
+        text-align: left;
+        margin-top: 0.5rem;
+      }
+      .avatar-container img {
+        max-width: 200px;
+        height: auto;
+      }
+      #quote {
+        text-align: center;
+        margin-top: auto;
+        padding-top: 2rem;
+        font-style: italic;
+        width: 100%;
+        max-width: 960px;
+      }
+      @media (min-width: 768px) {
+         #about-section .card {
+           margin-top: 0;
+         }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="/index.html">← Go back</a>
+    </nav>
+    <div class="container">
+      <section id="about-section">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-4 text-center avatar-container">
+            <a href="#about-section">
+              <img src="/images/avatar.png"
+                   alt="Avatar"
+                   class="img-fluid rounded shadow-sm mb-3 d-block mx-auto">
+            </a>
+          </div>
+          <div class="col-md-8 col-lg-6 text-center">
+            <div class="card">
+              <h2>About Me</h2>
+              <p><strong>Name:</strong> Khup Mung (Symere)</p>
+              <p><strong>Interests:</strong></p>
+              <ul class="d-inline-block text-left">
+                <li>Chess</li>
+                <li>Music (playing & listening)</li>
+                <li>Soccer</li>
+                <li>Movies</li>
+                <li>Mathematics (except trigonometry)</li>
+                <li>Philosophy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div id="quote"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script type="module">
+      const quotes = [
+        "Learning never exhausts the mind."
+      ];
+      const quoteElement = document.getElementById('quote');
+      if (quoteElement) {
+        quoteElement.innerText = quotes[Math.floor(Math.random() * quotes.length)];
+      } else {
+        console.error("Quote element not found!");
+      }
+    </script>
+  </body>
+</html>
